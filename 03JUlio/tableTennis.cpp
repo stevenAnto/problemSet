@@ -27,6 +27,8 @@ int main(){
   long long contadorDeIf=0;
   long long totalGandosj1=0;
   long long totalGandosj2=0;
+  long long whilec=0;
+  int max;
   while(true){
     long pasadorContadr=contadorDeIf;
     //camcio a j2
@@ -35,6 +37,7 @@ int main(){
       j2=fila.front();
       fila.pop();
       contadorDeIf++;
+      max=j1;
     }
     //cambia a j1
     else{
@@ -42,6 +45,7 @@ int main(){
       j1=fila.front();
       fila.pop();
       contadorDeIf--;
+      max=j2;
     }
     if(contadorDeIf>pasadorContadr){
       totalGandosj1++;
@@ -53,14 +57,19 @@ int main(){
     }
     if(totalGandosj2==k){
       cout<<j2;
-      //cout<<"gano "<<j2;
       break;
+      //cout<<"gano "<<j2;
     }
     if(totalGandosj1==k){
       cout<<j1;
       //cout<<"gano "<<j1;
       break;
     }
+    if(whilec>n){
+      cout<<max;
+      break;
+    }
+    whilec++;
     //cout<<"totalGandosj1 :"<<totalGandosj1<<endl;
     //cout<<"totalGandosj2 :"<<totalGandosj2<<endl;
   }

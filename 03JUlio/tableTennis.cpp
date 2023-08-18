@@ -1,6 +1,7 @@
 #include <iostream>
 #include<string>
 #include <queue>
+#include<set>
 
 using namespace std;
 
@@ -9,10 +10,12 @@ int main(){
   long long k;
   cin >>n>>k;
   queue<int> fila;
+  set<int> jugadores;
   while(n--){
     int c;
     cin>>c;
     fila.push(c);
+    jugadores.insert(c);
   }
   /*while (!fila.empty()) {
     cout<<"entro impirmi fila"<<endl;
@@ -32,6 +35,10 @@ int main(){
   while(true){
     long pasadorContadr=contadorDeIf;
     //camcio a j2
+    if(n>=k){
+      cout<<*(--jugadores.end());
+      break;
+    }
     if(j1>j2){
       fila.push(j2);
       j2=fila.front();

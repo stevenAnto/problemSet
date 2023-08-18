@@ -11,23 +11,23 @@ int sumaRecursiva(int arr[],int n){
     return arr[n-1]+ sumaRecursiva(arr,n-1);
   }
 }
-int findQuery(int arr[], int inicio, int fin, int guardados [300][300] ){
-  if(guardados[inicio][fin-1]!=0){
+int findQuery(int arr[], int inicio, int fin, int guardados [3000], int n ){
+  if(guardados[n*inicio+fin]!=0){
     cout<<"entro primer if\n";
-    return guardados[inicio][fin-1];
+    return arr[n*inicio+fin];
   }
   int suma = 0;
-  if(inicio>=fin) return 0;
-  guardados[inicio][fin]=findQuery(arr,inicio+1,fin,guardados);
- /* for(int i = inicio;i<fin; i++){
+  for(int i = inicio;i<fin; i++){
     suma += arr[i];
-    cout<<"inicio"<<inicio<<"fin"<<i<<endl;
-    cout<<"suma "<<suma<<endl;
-    guardados[inicio][i]=suma;
-  }*/
-  return guardados[inicio][fin];
-//  return findQuery(arr,inicio+1,fin,guardados);
+    cout<<"suma"<<suma<<endl;
+    guardados[n*inicio+i] =suma;
+  }
+  findQuery(arr,inicio+1,fin,guardados,n);
+  cout<<"no entro a nda"<<endl;
+    return arr[n*inicio+fin];
 }
+
+
 void mostrar(int v[], int n){
   for(int i = 0;i<n; i++){
     cout<<v[i]<<",";
@@ -51,12 +51,13 @@ int main(){
   }
   mostrar(arreglo, n);
   cout<<"sali for"<<endl;
-  int guardados [300][300]={0};
+  int guardados[3000]={0};
   while(q--){
   cout<<"entor whil for"<<endl;
     int l,r;
     cin>>l>>r;
-    cout<<findQuery(arreglo,l,r,guardados)<<"\n";
+    findQuery(arreglo,l,r,guardados,n);
+    mostrar(guardados,3000);
   }
   //mostrar(arreglo,n);
   //cout<<"entrara whil"<<endl;

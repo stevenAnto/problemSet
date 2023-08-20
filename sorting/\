@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct estudiante{
+  string name;
+  int team;
+  int score;
+  bool operator<(const estudiante& other){
+    return score>other.score;
+  }
+};
+void mostrar(vector<estudiante> v){
+  for(auto e : v){
+    cout<<e.name<<",";
+  }
+  cout<<endl;
+}
+void insertionSort(vector<int>& arr) {
+  int n = arr.size();
+  for (int i = 1; i < n; i++) {
+    int key = arr[i];
+    int j = i - 1;
+
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+
+    arr[j + 1] = key;
+  }
+}
+int main(){
+  int m,n;
+  cin>>m>>n;
+  vector <estudiante> estudiantes;
+  while(m--){
+    estudiante e1;
+    cin>>e1.name>>e1.team>>e1.score;
+    cout<<"e1.team "<<e1.team<<endl;
+    estudiantes.push_back(e1);
+  }
+
+  mostrar(estudiantes);
+  cout<<"vamos a ordenar"<<endl;
+  sort(estudiantes1.begin(), estudiantes1.end());
+  sort(estudiantes2.begin(), estudiantes2.end());
+  if(estudiantes1[1].score==estudiantes2[1].score){
+    cout<<"?"<<endl;
+  }
+  else{
+    cout<<estudiantes1[0].name<<" "<<estudiantes1[0].name<<endl;
+  }
+  mostrar(estudiantes1);
+  mostrar(estudiantes2);
+  return 0;
+}
